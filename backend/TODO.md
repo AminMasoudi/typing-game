@@ -7,11 +7,10 @@ Do everything on time
 
 ### Tue
 
-- [ ] Authentication method
-    - [ ] jwt authentication
-- [ ] Authentication API's   
-    - [ ] Registration
-    - [ ] Login
+- [x] Data validator
+- [x] Authentication API's   
+    - [x] Registration
+    - [x] Login
 - [ ] Start-game API
 - [ ] Random words
     
@@ -30,8 +29,12 @@ Do everything on time
 
 - [ ] Leadership's API
 - [ ] User progress API
-- [ ] Data validator
 - [ ] Debugging and test
 ***
+
+### Fri
+
+- [ ] Authentication method
+    - [ ] jwt authentication
 
  
