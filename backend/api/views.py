@@ -8,6 +8,7 @@ from django.contrib.auth.models import User
 
 from .serializers.requests import LoginSerializer, RegisterSerializer
 from .models import  Game
+from . import util
 # Create your views here.
 
 
@@ -41,7 +42,7 @@ def log_in(request):
 @permission_classes([IsAuthenticated])
 def new_game(request):
     if "game" not in request.session:
-        request.session["game"] = []
+        request.session["game"] = {}
 
     game = Game.objects.create(
         user=request.user,
@@ -51,10 +52,33 @@ def new_game(request):
     game_session = {
         "id" : game.pk,
         "user" : request.user.pk,
-        "start_time" : game.start_time.minute,
+        "start_time" : game.start_time.__str__(),
         "score" : game.score,
-        "end_time" : game.end_time
+        
     }
     
-    request.session["game"] +=  [game_session]
+    request.session["game"] = game_session
     return Response({"game":game.pk})
+
+
+
+@api_view(["GET"])
+def cache(request):
+    return Response(request.session)
+
+
+
+#TODO write a decorator to check if req.session[game] exist
+@api_view(["GET"])
+@authentication_classes([SessionAuthentication])
+@permission_classes([IsAuthenticated])
+def new_seq(request):
+    game = request.session["game"]
+    score = game["score"]
+    seq, words = util.random(score+1)
+    game["seq"] = seq
+    request.session["game"] = game
+    return Response({
+        "words" : words,
+        "seq" : seq
+    })
