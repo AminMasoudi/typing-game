@@ -1,6 +1,3 @@
-
-## TODO
-
 Do everything on time
 
 ***
@@ -11,13 +8,13 @@ Do everything on time
 - [x] Authentication API's   
     - [x] Registration
     - [x] Login
-- [ ] Start-game API
-- [ ] Random words
     
     ***
 
   
 ### Wed
+- [x] Start-game API
+- [ ] Random words
 - [ ] Score calculation API
 - [ ] Update game API
 - [ ] Logger

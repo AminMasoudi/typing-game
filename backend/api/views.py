@@ -7,6 +7,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 
 from .serializers.requests import LoginSerializer, RegisterSerializer
+from .models import  Game
 # Create your views here.
 
 
@@ -34,3 +35,26 @@ def log_in(request):
     })
 
 
+
+@api_view(["POST"])
+@authentication_classes([SessionAuthentication])
+@permission_classes([IsAuthenticated])
+def new_game(request):
+    if "game" not in request.session:
+        request.session["game"] = []
+
+    game = Game.objects.create(
+        user=request.user,
+        score = 0,
+    )
+    #TODO use redis
+    game_session = {
+        "id" : game.pk,
+        "user" : request.user.pk,
+        "start_time" : game.start_time.minute,
+        "score" : game.score,
+        "end_time" : game.end_time
+    }
+    
+    request.session["game"] +=  [game_session]
+    return Response({"game":game.pk})
