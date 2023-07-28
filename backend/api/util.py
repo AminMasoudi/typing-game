@@ -20,3 +20,16 @@ def random(k):
 
 
 
+def calculate(seq, orginal_seq):
+    score = 0
+    seq = seq.split()
+    orginal_seq = orginal_seq.split()
+    for i in range(len(orginal_seq)):
+        try:
+            if seq[i] == orginal_seq[i]:
+                score += 1
+            else:
+                score -= 1
+        except:
+            score -= 1
+    return score

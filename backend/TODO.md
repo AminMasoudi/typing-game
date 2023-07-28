@@ -14,17 +14,16 @@ Do everything on time
   
 ### Wed
 - [x] Start-game API
-- [ ] Random words
-- [ ] Score calculation API
-- [ ] Update game API
-- [ ] Logger
+- [x] Random words
+- [x] Update game API
+- [x] Logger
 - [ ] Error handling
 
     ***
 
 ### Thu
 
-- [ ] Leadership's API
+- [x] Leadership's API
 - [ ] User progress API
 - [ ] Debugging and test
 ***

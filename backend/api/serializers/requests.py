@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-
+from api.models import Profile
 
 class LoginSerializer(serializers.Serializer):
     username = serializers.CharField()
@@ -17,6 +17,7 @@ class RegisterSerializer(serializers.Serializer):
         username = validated_data.get("username")
         password = validated_data.get("password")
         user = User.objects.create_user(username, password=password)
+        prof = Profile.objects.create(user=user, score=0)
         if user:
             return user
         raise serializers.ValidationError("failed to auth")
