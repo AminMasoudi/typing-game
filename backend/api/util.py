@@ -1,5 +1,9 @@
+from django.contrib.auth.models import User
+
 from string import ascii_letters
 from random import choices
+
+from .models import Profile
 
 
 def random(k):
@@ -33,3 +37,12 @@ def calculate(seq, orginal_seq):
         except:
             score -= 1
     return score
+
+
+
+def create_user(username, password, *, score):
+    user = User.objects.create_user(username=username,
+                             password=password)
+    Profile.objects.create(user=user)
+
+    return user

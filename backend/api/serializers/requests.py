@@ -14,11 +14,12 @@ class RegisterSerializer(serializers.Serializer):
     password2   = serializers.CharField(min_length=8)
 
     def create(self, validated_data):
+        
         username = validated_data.get("username")
         password = validated_data.get("password")
         user = User.objects.create_user(username, password=password)
-        prof = Profile.objects.create(user=user, score=0)
         if user:
+            prof = Profile.objects.create(user=user, score=0)
             return user
         raise serializers.ValidationError("failed to auth")
 
