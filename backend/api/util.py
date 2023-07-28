@@ -24,13 +24,13 @@ def random(k):
 
 
 
-def calculate(seq, orginal_seq):
+def calculate(seq, original_seq):
     score = 0
     seq = seq.split()
-    orginal_seq = orginal_seq.split()
-    for i in range(len(orginal_seq)):
+    original_seq = original_seq.split()
+    for i in range(len(original_seq)):
         try:
-            if seq[i] == orginal_seq[i]:
+            if seq[i] == original_seq[i]:
                 score += 1
             else:
                 score -= 1

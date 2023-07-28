@@ -5,7 +5,7 @@ from rest_framework.decorators import api_view
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
-from api.serializers.requests import RegisterSerializer, LoginSerializer
+from api.serializers import RegisterSerializer, LoginSerializer
 
 
 class RegisterView(APIView):

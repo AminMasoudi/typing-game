@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import auth
+from .views import auth, game, general
 from . import view
 
 # my urls
@@ -7,11 +7,10 @@ urlpatterns = [
     path(r"auth/register/", auth.RegisterView.as_view(), name="register"),
     path(r"auth/login/", auth.LoginView.as_view(), name="login"),
 
-    path("new_game/", view.new_game, name="new_game"),
-    path("cache/", view.cache),
-    path("new_seq/", view.new_seq, name="new_seq"),
-    path("calculate", view.calculate, name="calculate"),
-    path("update/", view.update, name="update"),
-    path("leaders/", view.leads, name="leaders"),
-    path("progress/", view.progress, name="progress"),
+    path(r"game/", game.GameListCreate.as_view(), name="game"),
+
+    path("seq/", game.SeqAPIView.as_view(), name="seq"),
+    
+    path("leaders/", general.LeadersAPI.as_view(), name="leaders"),
+    path("progress/", general.ProgressAPI.as_view(), name="progress"),
 ]

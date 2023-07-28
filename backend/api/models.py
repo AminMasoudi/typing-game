@@ -17,6 +17,10 @@ class Profile(models.Model):
 class Game(models.Model):
     user = models.ForeignKey(User, models.DO_NOTHING, related_name="games")
     start_time = models.TimeField(auto_now_add=True)
-    score = models.IntegerField()
+    score = models.IntegerField(blank=True ,default=0)
     end_time = models.TimeField(null=True, blank=True)
 
+    @property
+    def username(self):
+        return self.user.username
+    

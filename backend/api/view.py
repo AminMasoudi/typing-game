@@ -6,8 +6,8 @@ from rest_framework.response import Response
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from django.utils.timezone import now
-from .serializers.requests import LoginSerializer, RegisterSerializer
-from.serializers.models import UserProfileSerializer, UserSerializer, GameSerializer
+from .serializers import GameSerializers
+# from.serializers.models import UserProfileSerializer, UserSerializer, GameSerializer
 from .models import  Game, Profile
 from . import util
 import time
@@ -125,7 +125,7 @@ def progress(request):
     games = request.user.games.all()
     number_of_games = len(games)
     scores_list = list(map(lambda game:game.score, games))
-    games = GameSerializer(games, many=True)
+    games = GameSerializers(games, many=True)
     max_score = max(scores_list)
     av = sum(scores_list) / number_of_games
     return Response({

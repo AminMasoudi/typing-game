@@ -17,19 +17,19 @@ Do everything on time
 - [x] Random words
 - [x] Update game API
 - [x] Logger
-- [ ] Error handling
 
     ***
 
 ### Thu
 
 - [x] Leadership's API
-- [ ] User progress API
+- [x] User progress API
 - [ ] Debugging and test
 ***
 
 ### Fri
 
+- [ ] Error handling
 - [ ] Authentication method
     - [ ] jwt authentication
 

@@ -31,3 +31,16 @@ class AuthTestCase(TestCase):
 
 
 
+class GameTestCase(TestCase):
+    def setUp(self) -> None:
+        self.PASSWORD = "qwerty12345678" 
+        self.foo = User.objects.create_user(username="Foo",
+                                            password=self.PASSWORD)
+        Profile.objects.create(user=self.foo)
+
+    def test_get_game(self):
+        c = Client()
+        login = c.login(username="Foo", password=self.PASSWORD)
+        self.assertEqual(login, True)
+        response = c.get(reverse("game"))
+        self.assertEqual(response.status_code, 200)
