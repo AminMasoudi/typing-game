@@ -16,6 +16,8 @@ class RegisterView(APIView):
         login(request ,user)
         return Response(register_ser.validated_data)
 
+
+
 class LoginView(APIView):
     def post(self, request, format=None):
         login_ser = LoginSerializer(User, data=request.data)
