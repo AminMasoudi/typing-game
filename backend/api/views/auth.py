@@ -33,7 +33,7 @@ class LoginView(APIView):
             login(request, user)
             return Response(login_ser.validated_data.get("username"))
         return Response({
-            "error": "failed to log in"
+            "detail": "failed to log in"
         }, 401)
 
 
