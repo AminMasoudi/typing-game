@@ -1,5 +1,7 @@
 version: '3.8'
 services:
-  backend: ./backend
-  ports:
-    - 80:8000
+  backend:
+    build: ./backend
+    ports:
+      - 80:8000
+    command: sh docker-entery.sh
