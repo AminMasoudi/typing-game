@@ -1,2 +1,4 @@
 djangorestframework
 django
+drf-yasg
+drf-yasg[validation]
